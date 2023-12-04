@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Movie Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #info-form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        input {
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Favorite Movie Details</h1>
+
+    <div id="info-form">
+        <label for="movieName">Movie Name:</label>
+        <input style="width: 750px;height: 40px;" type="text" id="movieName"><br>
+        
+        <label for="movieLink">Movie - Link:</label>
+        <input style="width: 750px;height: 40px;" type="text" id="movieLink"><br>
+        
+        <label for="movieRating">Movie Rating:</label>
+        <input style="width: 750px;height: 40px;" type="number" id="movieRating" min="0" max="10"><br>
+
+        <button onclick="openMovieWindow()">Add</button>
+    </div>
+
+    <script>
+        function openMovieWindow() {
+            const movieName = document.getElementById('movieName').value;
+            const movieLink = document.getElementById('movieLink').value;
+            const movieRating = document.getElementById('movieRating').value;
+
+            const movieDetails = `
+                <h1>Movie Details</h1>
+                <p><strong>Movie Name:</strong> ${movieName}</p>
+                <p><strong>Movie Link:</strong> <a href="${movieLink}" target="_blank">${movieLink}</a></p>
+                <p><strong>Movie Rating:</strong> ${movieRating}</p>
+            `;
+
+            const movieWindow = window.open('', '_blank', 'fullscreen=yes');
+            movieWindow.document.write(movieDetails);
+        }
+    </script>
+</body>
+</html>
